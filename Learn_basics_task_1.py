@@ -2,12 +2,13 @@ import pandas as pd
 import numpy as np
 
 k=1
-t=int(input('Enter the number of test cases\n'))
+t=int(input('Enter the number of test cases\n')) #number of test cases
 while(t):
-    instr=input('Enter the file name\n')
+    instr=input('Enter the file name\n') #name of the file with .xlsx extension
 
-    ins = pd.read_excel(instr, engine='openpyxl')
+    ins = pd.read_excel(instr, engine='openpyxl') 
 
+    #lists to store the data from the excel file
     Name=[]
     Username=[]
     Chapter_Tag=[]
@@ -19,8 +20,9 @@ while(t):
     time_taken=[]
     wrong=[]
 
+    #iterating through the dataframe
     for index, row in ins.iterrows():
-        if(row['Concept Test 1 - score']!='-'):
+        if(row['Concept Test 1 - score']!='-'):#if condition to check if the cell is empty
             Name.append(row['Name'])
             Username.append(row['id'])
             Chapter_Tag.append(row['Chapter Tag'])
@@ -128,6 +130,7 @@ while(t):
             time_taken.append(row['Topic Test 2 - time-taken (seconds)'])
             wrong.append(row['Topic Test 2- wrong'])
 
+    #making a dictionary from the lists previously made
     dict1={
         'Name': Name,
         'Username': Username,
@@ -143,8 +146,8 @@ while(t):
 
     out='output_'
     out += str(k)
-    out += '.xlsx'
-    fil=pd.DataFrame(dict1)
-    fil.to_excel(out)
+    out += '.xlsx' #out represents the name of the file
+    fil=pd.DataFrame(dict1) #making of dataframe from the dictionary
+    fil.to_excel(out) #exporting a excel file from the dataframe
     t=t-1
-    k=k+1
+    k=k+1 #here k is used to keep track of the number of outputs
