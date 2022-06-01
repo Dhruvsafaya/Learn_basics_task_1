@@ -148,6 +148,6 @@ while(t):
     out += str(k)
     out += '.xlsx' #out represents the name of the file
     fil=pd.DataFrame(dict1) #making of dataframe from the dictionary
-    fil.to_excel(out) #exporting a excel file from the dataframe
+    fil.to_excel(out, index=False) #exporting a excel file from the dataframe
     t=t-1
     k=k+1 #here k is used to keep track of the number of outputs
